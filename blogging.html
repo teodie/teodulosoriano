@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="blogging.js"></script>
+    <link rel="stylesheet" href="blogging.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teodi</title>
+</head>
+<body >
+    <header>
+        
+        <div class="logo_con">
+            <!-- <div class="logo_img"></div> -->
+            <i class="fa fa-pagelines" id="logo"></i>
+            <a id="logo_text" href="#">Zeryack</a>
+        </div>
+        
+        <div class="nav__container" id="nav_container"> 
+            <nav>
+                <ul id="nav_ul" class="nav_ul">
+                    <!-- <li><a href="#">Embedded</a></li>
+                    <li><a href="#">Orange Pi</a></li> -->
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Search</a></li>
+                    <!-- <li><i class="nav_close" id="close_nav">x</i></li> -->
+                </ul>
+
+
+            </nav>
+        </div>
+
+        <label class="burger_menu" id="burgerm" >
+            <input id="chk" type="checkbox" onchange="toggle()" />
+        </label>
+    </header>
+
+    <div class="content_container">
+        <div class="left_aside_container">
+            <!-- <aside></aside> -->
+        </div>
+        <div class="section_container">
+            <section>
+                <div class="section_header">
+                    <h4 class="type">[ Tutorial ]</h4>
+                    <h1 class="title">Getting started with Orange Pi One</h1>
+                </div>
+                <div class="section_data">
+                    <div class="published_date">Published on August 08, 2023</p></div>
+                    <ul class="related_list">
+                        <li>Orange pi</li>
+                        <li>Embedded</li>
+                        <li>Linux</li>
+                    </ul>
+                    <div class="section_author">
+                        <!-- author image  -->
+
+                        <div style="  height: 40px; width: 40px; border-radius: 20px; background-color: rgb(27, 37, 65); border: 0;">
+                            <img src="/assets/img/TEODULOSORIANOJR.png" alt="pic" id="author_img">
+                        </div>
+                        <p><p>By</p></a><a href="#" class="author_name">Teodulo Soriano jr.</a></p>
+                    </div>
+                </div>
+                <!-- image for the blog  -->
+                <img src="/assets/img/opi_one.png" class="blog_img" alt="blogging image">
+            </section>
+
+            
+            <section class="blogging_section">
+                <h3>Introduction</h3>
+                <p>I have been thinkering with orange pi and notice that there only a hand full of tutorials about it, most of them are out dated compared to raspberry pi that dominated the playground with a ton of tutorials, this just shows how popular raspberry pi on the market and how large community has become. Orange pi on the other hand has a small community and just a few tutorials on it so the aim for this blog post is to introduce you to the world SoC (System on Chip)  boards.</p>
+                
+                <h2>Hardware need:</h2>
+
+                <p>
+                    Orange pi one <br>
+                    SDcard Reader <br>
+                    Memory card 8GB(or higher) <br>
+                    5volts and 2 Amp Power Supply<br>
+                    Ethernet cable <br>
+                    and lastly laptop or PC
+                </p>
+                <!-- just space -->
+                      <br>
+                <h2>Flashing your memory card</h2>
+
+                <p>Before power up our opi we need os installed on the memory card so the system can boot from there.
+                    Insert your memory card into the card reader and the plugin the card reader to the pc.
+                    Format to sdcard using sd card formatter you can just format it normaly or use a formatting 
+                    software like <a href="https://www.sdcardformatter.com/">SD card formatter</a>.
+                    after the memory card has been formatted open
+                    <a href="https://etcher.balena.io/">Balena eatcher</a>
+                    click "Flash from file" and locate the os image you have downloaded then select your
+                    target memory to flash which is your sdcard select your storage
+                    device and then click select and then click flash.
+                </p>
+
+                <img class="tutorial_images" src="assets/img/balena.PNG" alt="balena ">
+
+                <h2>Powering Up!</h2>
+
+                <p>Before pluging the power, insert the memory card into the Opi 
+                    and make sure the ethernet cable is connected from your router/modem
+                    port into your Orange Pi
+                </p>
+                <p>If all goes according to plan you should be able to connect
+                     by a ssh and to do that install <a href="https://www.putty.org/?paipat">Putty</a>, 
+                     once installed open you should know the ip address assigned by the router to your orange pi</p>
+
+                <h2>Getting ip address</h2>
+                <p>Ip address in computing is like name of a person, 
+                    the only difference is that each device needs 
+                    to have unique address inside a network to avoid
+                    conflict with the other device. To know the IP address(name)
+                    of out orange pi device we need to login to our routers portal
+                    and there we can see the list of all connected device through 
+                    a LAN connection. Look on the hostname column and locate the the name 
+                    orangepi you should see the IPaddress: <b>192.168.123.4</b>.
+                </p>
+
+                <h2 id="ssh_image">SSH to your Opi</h2>
+                <p>Now that we know the name of our Orange pi device we can now
+                    talk to it using Putty. Open the putty application
+                    and copy and paste the ip address under the Host name
+                    or IP address box like shown in below image
+                    and click <b>open</b> on the righthand corner.
+                    
+                </p>
+                <img class="tutorial_images" src="assets/img/ssh.png" alt="sshimg">
+
+                <p>When logging in for the first promt will pop-up with a warning
+                    just click accept and you should be greated with a ternal
+                    window like below.
+                </p>
+
+                
+                <div class="code_container">
+                    <p>login as: <a>root</a> <br>
+                        root@192.168.123.4 password: <a>****</a>
+                    </p>
+                </div>
+
+                <p> <br> Follow the instructions on creating root password and your user And there you have it!  
+                    I will also be posting about initial setup your Opi And
+                    costomize the terminal etc.
+                </p>
+
+                <h1>There you have it!! you can now explore the facinating world of single board computers!!</h1>
+
+                <footer>
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-linkedin"></i>
+                    <i class="fa fa-github"></i>
+                    <i class="fa fa-twitter"></i>
+                </footer>
+
+            </section>
+        </div>
+
+        <div class="right_aside_container">
+            <!-- <aside></aside> -->
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
