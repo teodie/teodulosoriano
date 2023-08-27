@@ -79,10 +79,6 @@ nav li{
   padding: 10px;
 }
 
-nav li:hover {
-  border-radius: 10px;
-  background-color: rgb(239, 242, 251);
-}
 
 
 nav a {
@@ -90,6 +86,22 @@ nav a {
   color: rgb(27, 37, 65); /* White font color */
   font-family: Epilogue,sans-serif;
   font-weight: 600;
+  position: relative;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  border-radius: 2px;
+  bottom: -2px;
+  width: 0;
+  transition: width .5s;
+  background-color: rgb(27, 37, 65);
+}
+
+nav a:hover::before {
+  width: 100%;
 }
 
 
