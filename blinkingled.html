@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="blogging.js"></script>
+  <link rel="stylesheet" href="blogging.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teodi</title>
+</head>
+
+<body>
+  <header>
+
+    <div class="logo_con">
+      <!-- <div class="logo_img"></div> -->
+      <i class="fa fa-pagelines" id="logo"></i>
+      <a id="logo_text" href="#">Teodi</a>
+    </div>
+
+    <div class="nav__container" id="nav_container">
+      <nav>
+        <ul id="nav_ul" class="nav_ul">
+          <!-- <li><a href="#">Embedded</a></li>
+                    <li><a href="#">Orange Pi</a></li> -->
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="#modal">Contacts</a></li>
+
+        </ul>
+
+
+      </nav>
+    </div>
+
+    <label class="burger_menu" id="burgerm">
+      <input id="chk" type="checkbox" onchange="toggle()" />
+    </label>
+  </header>
+
+  <div class="content_container">
+    <div class="left_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+    <div class="section_container">
+      <section>
+        <div class="section_header">
+          <h4 class="type">[ Tutorial ]</h4>
+          <h1 class="title">How to Blink an LED with Orange Pi: A Beginner's Guide</h1>
+        </div>
+        <div class="section_data">
+          <div class="published_date">Published on September 04, 2023</p>
+          </div>
+          <ul class="related_list">
+            <li>Orange pi</li>
+            <li>Embedded</li>
+            <li>Linux</li>
+          </ul>
+          <div class="section_author">
+            <!-- author image  -->
+
+            <div
+              style="  height: 40px; width: 40px; border-radius: 20px; background-color: rgb(27, 37, 65); border: 0;">
+              <img src="./assets/img/teodulo.png" id="author_img">
+            </div>
+
+            <p>
+            <p>By</p></a><a href="#" class="author_name">Teodulo Soriano jr.</a></p>
+          </div>
+        </div>
+        <!-- image for the blog  -->
+        <img src="./assets/img/tutorial_img/completed.PNG" class="blog_img" alt="blogging image">
+      </section>
+
+
+      <section class="blogging_section">
+        <h3>Introduction</h3>
+        <p contenteditable="true">Blinking an LED with an Orange Pi might seem like a small step in the world of
+          electronics, but it's a giant leap for beginners. In this step-by-step guide, we'll take you through the
+          process of controlling an LED using an Orange Pi. Whether you're an aspiring electronics enthusiast or just
+          curious about how things work, this project will ignite your passion for learning. So, let's dive in!</p>
+
+        <h2>Prerequisites</h2>
+
+        <p>
+          <b>Orange Pi:</b> Setting up your orange pi that we covered <a href="./index.html">last post</a><br>
+          <b>LED:</b> Any basic LED will do. <br>
+          <b>220-ohm Resistor:</b> This resistor will protect the LED from too much current <br>
+          <b>Breadboard and Jumper Wires:</b> For easy connections <br>
+          <b>Power Supply:</b> Ensure your Orange Pi is powered up.<br>
+        </p>
+        <!-- just space -->
+        <br>
+        <h2>Step 1: Installing OPi.GPIO</h2>
+
+        <p>
+          This python module is what will be using to interface with the hardware of Opi.
+          To install it copy and paste command below.
+        </p>
+
+        <div class="code_container">
+          <p>sudo pip3 install <a>Opi.Gpio</a> <br>
+          </p>
+        </div>
+
+        <p>You should see below output once successfully installed.</p>
+
+
+        <div class="code_container">
+          <p><a>teodi@Oh-my-Opi-one:~$</a> sudo pip3 install OPi.GPIO <br>
+            Collecting Opi.Gpio <br>
+            Using cached OPi.GPIO-0.5.2-py2.py3-none-any.whl (33 kB) <br>
+            Installing collected packages: Opi.Gpio <br>
+            Successfully installed Opi.Gpio-0.5.2 <br>
+          </p>
+
+        </div>
+
+        <h2>Step 2: Wiring the LED</h2>
+
+        <p>
+          I will assume you know how breadboard works if you landed in this page but if not you can go to this <a href="https://www.etechnophiles.com/how-to-use-a-breadboard/">tutorial</a> that goes indepth on how breadboard works and how to use it.
+        </p>
+
+        <img class="tutorial_images" src="./assets/img/wiringled.PNG" alt="sshimg">
+
+
+        <h2>Step 3: Writing Code</h2>
+
+        <p>Open you putty and connect to your Orange Pi like be have covered in the last blog post
+          once login go ahead and create our python file that will contain our code, to do that run below command.
+        </p>
+
+        <div class="code_container">
+          <p>touch <a>Blink.py</a> <br>
+          </p>
+        </div>
+
+        <p>Once created make sure to make the python file executable to avoid getting permission error since we will be interating with the gpio which needs a root access.</p>
+
+      
+
+        <div class="code_container">
+          <p>chmod +x <a>Blink.py</a> <br>
+          </p>
+        </div>
+
+        <p>
+          After you have done that we can now go ahead and edit the code. <br>
+          Open the file by using nano or vim, if you are new to command line I recommend starting up with nano, just run command below. 
+        </p>
+
+        <div class="code_container">
+          <p>nano <a>Blink.py</a> <br>
+          </p>
+        </div>
+
+        <p>Once the file is open go ahead and copy and paste below code.</p>
+
+
+        <div class="code_container">
+          <p><a># Import the modules that we will be using</a><br>
+            import OPi.GPIO as GPIO <br>
+            from time import sleep <br>
+            <br>
+            <a># Set the GPIO mode to physical board numbering </a><br>
+            GPIO.setmode(GPIO.BOARD) <br>
+            <br>
+            <a># Assign pin with its using physical location</a> <br>
+            ledpin = 3    &nbsp; &nbsp;   <a># PA12</a> <br>
+            <br>
+            <a># Set the LED pin as an output</a> <br>
+            GPIO.setup(ledpin, GPIO.OUT) <br>
+            <br>
+            <a># set the duration of the delay into half a second</a> <br>
+            delay = 0.5 <br>
+            
+            <a># for loop that will run what is inside for 10 times </a><br>
+            for i in range(10): <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.HIGH)  &nbsp; &nbsp; <a># This will make the led turn on</a> <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; print("Turned HIGH") <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay) &nbsp; &nbsp; &nbsp; &nbsp;      <a># stay on for given amount of time (delay)</a>  <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.LOW) &nbsp; &nbsp;  <a># This will make the &led turn off</a> <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; print("Turned LOW") <br>
+                &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay)               &nbsp; &nbsp;     <a># stay off for given amount of delay time </a><br>
+            <br>
+            <a># Clean the resource that has been used</a> <br>
+            GPIO.cleanup() <br>
+            print("Completed!!") <br>
+            </p>
+        </div>
+
+        <p>After pasting the code press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + o</a> to save it and press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + x</a> to exit</p>
+
+        <h2>Step 4: Run the Code</h2>
+
+        <p>Finally we are now ready to run our python script and to do that run the below command and input your password once promted.</p>
+
+        <div class="code_container">
+          <p>sudo python3 <a>Blink.py</a> <br>
+          </p>
+        </div>
+
+        <p>If all goes to plan you should see the led turn on and off. If its not working double check your connection with the orange pi pins.</p>
+
+        <h2>Conclussion</h2>
+        <p>In this post we have learn to control the gpio pins of our orange pi which is very useful especially on alot of aplication like IoT, home automation, hobby projects and more. </p>
+        <h1>Next up: Controlling Builtin LED of Orange Pi</h1>
+
+        <footer>
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-linkedin"></i>
+          <i class="fa fa-github"></i>
+          <i class="fa fa-twitter"></i>
+        </footer>
+
+      </section>
+    </div>
+
+    <div class="right_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal_content">
+
+        <div class="modal_header">
+          <a href="#"><i class="fa fa-window-close" ></i></a>
+        </div>
+        <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.profile {
+    /* border: 1px red dashed; */
+    min-width: 8em;
+    width: 15vw;
+    flex-shrink: 0;
+    /* border: 1px red dashed; */
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.bg {
+    background-color: rgb(27, 37, 65);
+    display:   flex;
+    place-items: center;
+    grid-template-columns: 8em, 1fr;
+    padding-top: 5em;
+    /* border: 1px red dashed; */
+    height: 100%;
+}
+
+.profile img {
+    /* border: 1px red dashed; */
+    border-radius: 50%;
+    border: white 5px solid;
+
+}
+
+.name {
+    /* border: 1px red dashed; */
+    color: white;
+    font-family: Epilogue,sans-serif;
+    font-weight: 500;
+    font-size: clamp(25px, 4vw, 30px);
+    margin-top: 10px;
+    
+
+
+    animation-duration: 1s; /* the duration of the animation */
+    animation-timing-function: ease-out; /* how the animation will behave */
+    animation-delay: 0s; /* how long to delay the animation from starting */
+    animation-iteration-count: 1; /* how many times the animation will play */
+    animation-name: slideInFromRight; /* the name of the animation we defined above */
+}
+
+.about {
+    /* border: 1px red dashed; */
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    max-width: 50em;
+    margin-bottom: 10px;
+}
+
+footer {
+    /* border: dashed 1px red; */
+    
+    margin: 0;
+    color: white;
+    background-color: rgb(27, 37, 65);
+    padding-bottom: 30px;
+}
+
+
+
+@media(max-width: 650px) {
+    .bg {
+        background-color: rgb(27, 37, 65);;
+        /* border: 1px red dashed; */
+        height: 100%;
+        width: 1fr;
+        padding-top: 5em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile {
+        /* border: 1px red dashed; */
+        height: 8rem;
+        width: 8rem;
+    
+
+        animation-duration: 1s; /* the duration of the animation */
+        animation-timing-function: ease-out; /* how the animation will behave */
+        animation-delay: 0s; /* how long to delay the animation from starting */
+        animation-iteration-count: 1; /* how many times the animation will play */
+        animation-name: slideInFromLeft; /* the name of the animation we defined above */
+    }
+ 
+    .profile img {
+        border-radius: 50%;
+        border: white 5px solid;
+    }
+    
+
+    .name {
+        color: white;
+        font-family: Epilogue,sans-serif;
+        font-weight: 500;
+        font-size: clamp(25px, 4vw, 30px);
+        margin-top: 10px;
+        text-align: center;
+    
+
+        animation-duration: 1s; /* the duration of the animation */
+        animation-timing-function: ease-out; /* how the animation will behave */
+        animation-delay: 0s; /* how long to delay the animation from starting */
+        animation-iteration-count: 1; /* how many times the animation will play */
+        animation-name: slideInFromRight; /* the name of the animation we defined above */
+    }
+
+    .about {
+        margin-top: 10px;
+        padding: 10px;
+        color: white;
+    }
+
+    footer {
+        display: flex;
+    }
+
+
+}

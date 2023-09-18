@@ -1,87 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <script src="blogging.js"></script>
-    <link rel="stylesheet" href="./assets/css/global.css">
-    <link rel="stylesheet" href="./assets/css/burger_menu.css">
-    <!-- <link rel="stylesheet" href="blogging.css"> -->
-    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="blogging.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teodi</title>
 </head>
-
-<body>
-
-    <header class="header">
-
-        <div class="left_nav">
+<body >
+    <header>
+        
+        <div class="logo_con">
             <!-- <div class="logo_img"></div> -->
             <i class="fa fa-pagelines" id="logo"></i>
-            <a id="logo_text" href="./index.html">Teodi</a>
+            <a id="logo_text" href="#">Teodi</a>
+        </div>
+        
+        <div class="nav__container" id="nav_container"> 
+            <nav>
+                <ul id="nav_ul" class="nav_ul">
+                    <!-- <li><a href="#">Embedded</a></li>
+                    <li><a href="#">Orange Pi</a></li> -->
+                    <li><a href="./tutorials.html">Tutorials</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="#modal">Contacts</a></li>
+    
+                </ul>
+
+
+            </nav>
         </div>
 
-        
-        
-        <nav id="nav">
-            <ul id="right_ul" class="right_nav">
-                <!-- <li><a href="#">Embedded</a></li>
-                    <li><a href="#">Orange Pi</a></li> -->
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="#">Search</a></li>
-            </ul>
-        </nav>
-
         <label class="burger_menu" id="burgerm" >
-            <input id="chk" type="checkbox" onchange="tog()" />
+            <input id="chk" type="checkbox" onchange="toggle()" />
         </label>
-        
-        
-
-
     </header>
 
-<div style="display: flex;
-            justify-content: space-around;
-            ">
-    <div style="height: 10em; 
-            width: 10em;
-            background-color: lightblue;
-            border-radius: 10%;
-            border-color: rgb(61, 172, 209);
-            border-style: solid;
-            "></div>
+    <section>
+        <div class="bg">
+            <div class="profile"><img src="./assets/img/teodulo.png" alt=""></div>
+            <div>
+                <div class="name">Teodulo B. Soriano Jr. </div>
+                <div class="about"> <h2>Hello there, and welcome to my website!</h2> <br> <br>
 
-<div style="height: 10em; 
-            width: 10em;
-            background-color: lightblue;
-            border-radius: 10%;
-            border-color: rgb(61, 172, 209);
-            border-style: solid;
-            flex-shrink: 0;
-            "></div>
-
-<div style="height: 10em; 
-            width: 10em;
-            background-color: lightblue;
-            border-radius: 10%;
-            border-color: rgb(61, 172, 209);
-            border-style: solid;
-            "></div>
-</div>
+                    <p>This digital space serves as a compilation of all my projects and a showcase of my various interests. My primary goal for this platform is to employ the Feynman Technique to deepen my understanding of the subjects I'm passionate about. </p> <br>
+                    
+                    <p>The Feynman Technique, inspired by the great physicist Richard Feynman, emphasizes the idea that to truly comprehend something, you should be capable of teaching it to others. Here, I'll be sharing my journey of learning, breaking down complex topics, and distilling them into simpler, more understandable pieces.</p> <br>
+                    
+                    <p>As you navigate through my blog, you'll find a diverse array of subjects that pique my curiosity, and I'll strive to impart my knowledge and insights in an approachable manner. Whether it's science, technology, art, or any other area of interest, I'm excited to embark on this learning journey with you.</p> <br> <br>
+                    
+                    <h3> Feel free to explore, engage, and join me in the pursuit of knowledge and understanding. Let's learn together! </h3> <br>
+                </div>
 
 
+            </div>
 
-<p>
-    This is the first line
-</p>
+        </div>
+    </section>
+
+
+    
+    <footer>
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-github"></i>
+        <i class="fa fa-twitter"></i>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal_content">
+
+            <div class="modal_header">
+              <a href="#"><i class="fa fa-window-close" ></i></a>
+						</div>
+            <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
+        </div>
+
+    </div>
 
 </body>
-
 </html>

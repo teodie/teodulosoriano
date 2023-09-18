@@ -11,6 +11,7 @@
   --darkblue-color: rgb(27, 37, 65);
   --background-color: white;
   --content-text-color: rgb(77, 91, 124);
+  --code-color: #ff4084;
 
 }
 
@@ -225,6 +226,31 @@ footer {
     margin: 8px 0px;
 }
 
+.comment_area {
+  position: relative;
+  height: 10em;
+  width: 100%;
+  border: 3px black solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.comment_btn {
+  position: absolute;
+  border: none;
+  right: 20px;
+  bottom: 20px;
+  height: 3em;
+  width: 7em;
+  border-radius: 10px ;
+  background-color: var(--darkblue-color);
+  color: aliceblue;
+}
+
+.comment_btn:hover {
+  opacity: .5;
+}
+
 .title {
   font-size: 32px;
   font-family: Inter, sans-serif;
@@ -276,6 +302,65 @@ img {
   height: 100%;
   width: 100%;
 }
+
+
+/*--------------------MODAL--------------------------*/
+.modal {
+  visibility: hidden;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  top: 0; left: 0; right: 0; bottom: 0;
+  transition: all .4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_content {
+  background-color: rgb(3, 27, 78);
+  position: absolute;
+  top: 70px;
+  max-width: 600px;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.modal_header a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.modal_header {
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(3, 27, 78);
+  font-size: xx-large;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.message {
+  margin-top: 6vh;
+}
+
+.message img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal:target{
+  visibility: visible;
+}
+
+
+
+
 
 /* ---------------------------Blogging Section--------------------------------------- */
 
