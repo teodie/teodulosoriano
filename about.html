@@ -1,69 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="blogging.js"></script>
-    <link rel="stylesheet" href="blogging.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/burger_menu.css">
+    <!-- <link rel="stylesheet" href="blogging.css"> -->
+    <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teodi</title>
 </head>
-<body >
-    <header>
-        
-        <div class="logo_con">
+
+<body>
+
+    <header class="header">
+
+        <div class="left_nav">
             <!-- <div class="logo_img"></div> -->
             <i class="fa fa-pagelines" id="logo"></i>
             <a id="logo_text" href="./index.html">Teodi</a>
         </div>
+
         
-        <div class="nav__container" id="nav_container"> 
-            <nav>
-                <ul id="nav_ul" class="nav_ul">
-                    <!-- <li><a href="#">Embedded</a></li>
+        
+        <nav id="nav">
+            <ul id="right_ul" class="right_nav">
+                <!-- <li><a href="#">Embedded</a></li>
                     <li><a href="#">Orange Pi</a></li> -->
-                    <li><a href="#">Tutorials</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Search</a></li>
-                </ul>
-
-
-            </nav>
-        </div>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Search</a></li>
+            </ul>
+        </nav>
 
         <label class="burger_menu" id="burgerm" >
-            <input id="chk" type="checkbox" onchange="toggle()" />
+            <input id="chk" type="checkbox" onchange="tog()" />
         </label>
+        
+        
+
+
     </header>
 
-    <div class="content_container">
+<div style="display: flex;
+            justify-content: space-around;
+            ">
+    <div style="height: 10em; 
+            width: 10em;
+            background-color: lightblue;
+            border-radius: 10%;
+            border-color: rgb(61, 172, 209);
+            border-style: solid;
+            "></div>
 
-        <div class="left_aside_container" style="border-style: dashed;">
-            <!-- <aside></aside> -->
-        </div>
+<div style="height: 10em; 
+            width: 10em;
+            background-color: lightblue;
+            border-radius: 10%;
+            border-color: rgb(61, 172, 209);
+            border-style: solid;
+            flex-shrink: 0;
+            "></div>
 
-        <div class="section_container" style="margin-top: 4em; border-radius: 10px; border-style: dashed;" >
-            
-            
-            <div id="bkg_container" style="display: grid;">
-                <div style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 12em; max-width: 40em; border-style: dashed; background-color: rgb(27, 37, 65);"></div>
-                <!-- <img src="./assets/img/balena.PNG" alt="" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 12em; max-width: 40em; border-style: dashed;"> -->
-                <img src="./assets/img/teodulo.png" alt="" style="height: 7em; width: auto; border-radius: 50%;
-                margin-top: -5em; margin-left: 2em; border-color: white; border-style: solid; border-width: 5x;
-">
-            </div>
-
-        </div>
-
-        <div class="right_aside_container" style="border-style: dashed;">
-            <!-- <aside></aside> -->
-        </div>
-    </div>
+<div style="height: 10em; 
+            width: 10em;
+            background-color: lightblue;
+            border-radius: 10%;
+            border-color: rgb(61, 172, 209);
+            border-style: solid;
+            "></div>
+</div>
 
 
-    
+
+<p>
+    This is the first line
+</p>
 
 </body>
+
 </html>

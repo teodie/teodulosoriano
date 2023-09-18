@@ -14,6 +14,21 @@ function toggle(){
     
 }
 
+function tog(){
+    var checked = document.getElementById("chk").checked;
+    console.log("hi there")
+
+    if (checked){
+        console.log("checked");
+        document.getElementById('nav').className = 'show_n';
+    }
+    else {
+        console.log("unchecked");
+        document.getElementById('nav').className = 'nav';
+    }
+    
+}
+
 
 
 
