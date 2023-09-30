@@ -3,8 +3,8 @@
 
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2600365737312524"
-     crossorigin="anonymous"></script>
-     
+    crossorigin="anonymous"></script>
+
   <script src="blogging.js"></script>
   <link rel="stylesheet" href="blogging.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -85,6 +85,18 @@
           process of controlling an LED using an Orange Pi. Whether you're an aspiring electronics enthusiast or just
           curious about how things work, this project will ignite your passion for learning. So, let's dive in!</p>
 
+        <!-- ____________________________ADDS SECTION_______________________ -->
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2600365737312524"
+          crossorigin="anonymous"></script>
+        <!-- first_add -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2600365737312524"
+          data-ad-slot="9106053654" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- ________________________________________________________ -->
+
         <h2>Prerequisites</h2>
 
         <p>
@@ -124,7 +136,9 @@
         <h2>Step 2: Wiring the LED</h2>
 
         <p>
-          I will assume you know how breadboard works if you landed in this page but if not you can go to this <a href="https://www.etechnophiles.com/how-to-use-a-breadboard/">tutorial</a> that goes indepth on how breadboard works and how to use it.
+          I will assume you know how breadboard works if you landed in this page but if not you can go to this <a
+            href="https://www.etechnophiles.com/how-to-use-a-breadboard/">tutorial</a> that goes indepth on how
+          breadboard works and how to use it.
         </p>
 
         <img class="tutorial_images" src="./assets/img/wiringled.PNG" alt="sshimg">
@@ -141,9 +155,10 @@
           </p>
         </div>
 
-        <p>Once created make sure to make the python file executable to avoid getting permission error since we will be interating with the gpio which needs a root access.</p>
+        <p>Once created make sure to make the python file executable to avoid getting permission error since we will be
+          interating with the gpio which needs a root access.</p>
 
-      
+
 
         <div class="code_container">
           <p>chmod +x <a>Blink.py</a> <br>
@@ -152,7 +167,8 @@
 
         <p>
           After you have done that we can now go ahead and edit the code. <br>
-          Open the file by using nano or vim, if you are new to command line I recommend starting up with nano, just run command below. 
+          Open the file by using nano or vim, if you are new to command line I recommend starting up with nano, just run
+          command below.
         </p>
 
         <div class="code_container">
@@ -172,44 +188,51 @@
             GPIO.setmode(GPIO.BOARD) <br>
             <br>
             <a># Assign pin with its using physical location</a> <br>
-            ledpin = 3    &nbsp; &nbsp;   <a># PA12</a> <br>
+            ledpin = 3 &nbsp; &nbsp; <a># PA12</a> <br>
             <br>
             <a># Set the LED pin as an output</a> <br>
             GPIO.setup(ledpin, GPIO.OUT) <br>
             <br>
             <a># set the duration of the delay into half a second</a> <br>
             delay = 0.5 <br>
-            
+
             <a># for loop that will run what is inside for 10 times </a><br>
             for i in range(10): <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.HIGH)  &nbsp; &nbsp; <a># This will make the led turn on</a> <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; print("Turned HIGH") <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay) &nbsp; &nbsp; &nbsp; &nbsp;      <a># stay on for given amount of time (delay)</a>  <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.LOW) &nbsp; &nbsp;  <a># This will make the &led turn off</a> <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; print("Turned LOW") <br>
-                &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay)               &nbsp; &nbsp;     <a># stay off for given amount of delay time </a><br>
+            &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.HIGH) &nbsp; &nbsp; <a># This will make the led turn
+              on</a> <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; print("Turned HIGH") <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay) &nbsp; &nbsp; &nbsp; &nbsp; <a># stay on for given amount of time
+              (delay)</a> <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; GPIO.output(ledpin, GPIO.LOW) &nbsp; &nbsp; <a># This will make the &led turn
+              off</a> <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; print("Turned LOW") <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; sleep(delay) &nbsp; &nbsp; <a># stay off for given amount of delay time </a><br>
             <br>
             <a># Clean the resource that has been used</a> <br>
             GPIO.cleanup() <br>
             print("Completed!!") <br>
-            </p>
+          </p>
         </div>
 
-        <p>After pasting the code press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + o</a> to save it and press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + x</a> to exit</p>
+        <p>After pasting the code press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + o</a> to
+          save it and press <a style="color: crimson; font-size: large; font-weight: 700;">CTRL + x</a> to exit</p>
 
         <h2>Step 4: Run the Code</h2>
 
-        <p>Finally we are now ready to run our python script and to do that run the below command and input your password once promted.</p>
+        <p>Finally we are now ready to run our python script and to do that run the below command and input your
+          password once promted.</p>
 
         <div class="code_container">
           <p>sudo python3 <a>Blink.py</a> <br>
           </p>
         </div>
 
-        <p>If all goes to plan you should see the led turn on and off. If its not working double check your connection with the orange pi pins.</p>
+        <p>If all goes to plan you should see the led turn on and off. If its not working double check your connection
+          with the orange pi pins.</p>
 
         <h2>Conclussion</h2>
-        <p>In this post we have learn to control the gpio pins of our orange pi which is very useful especially on alot of aplication like IoT, home automation, hobby projects and more. </p>
+        <p>In this post we have learn to control the gpio pins of our orange pi which is very useful especially on alot
+          of aplication like IoT, home automation, hobby projects and more. </p>
         <h1>Next up: Controlling Builtin LED of Orange Pi</h1>
 
         <footer>
@@ -230,13 +253,13 @@
   <div id="modal" class="modal">
     <div class="modal_content">
 
-        <div class="modal_header">
-          <a href="#"><i class="fa fa-window-close" ></i></a>
-        </div>
-        <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
+      <div class="modal_header">
+        <a href="#"><i class="fa fa-window-close"></i></a>
+      </div>
+      <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
     </div>
 
-</div>
+  </div>
 
 
 </body>
