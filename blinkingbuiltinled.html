@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <script src="blogging.js"></script>
+  <link rel="stylesheet" href="blogging.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teodi</title>
+</head>
+
+<body>
+  <header>
+
+    <div class="logo_con">
+      <!-- <div class="logo_img"></div> -->
+      <i class="fa fa-pagelines" id="logo"></i>
+      <a id="logo_text" href="#">Teodi</a>
+    </div>
+
+    <div class="nav__container" id="nav_container">
+      <nav>
+        <ul id="nav_ul" class="nav_ul">
+          <!-- <li><a href="#">Embedded</a></li>
+                    <li><a href="#">Orange Pi</a></li> -->
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="#modal">Contacts</a></li>
+
+        </ul>
+
+
+      </nav>
+    </div>
+
+    <label class="burger_menu" id="burgerm">
+      <input id="chk" type="checkbox" onchange="toggle()" />
+    </label>
+  </header>
+
+  <div class="content_container">
+    <div class="left_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+    <div class="section_container">
+      <section>
+        <div class="section_header">
+          <h4 class="type">[ Tutorial ]</h4>
+          <h1 class="title">How to Blink Built-in LED of Orange Pi One</h1>
+        </div>
+        <div class="section_data">
+          <div class="published_date">Published on September 30, 2023</p>
+          </div>
+          <ul class="related_list">
+            <li>Orange pi</li>
+            <li>Embedded</li>
+            <li>Linux</li>
+          </ul>
+          <div class="section_author">
+            <!-- author image  -->
+
+            <div
+              style="  height: 40px; width: 40px; border-radius: 20px; background-color: rgb(27, 37, 65); border: 0;">
+              <img src="./assets/img/teodulo.png" id="author_img">
+            </div>
+
+            <p>
+            <p>By</p></a><a href="#" class="author_name">Teodulo Soriano jr.</a></p>
+          </div>
+        </div>
+        <!-- image for the blog  -->
+        <img src="./assets/img/tutorial_img/builtinled.PNG" class="blog_img" alt="blogging image">
+      </section>
+
+
+      <section class="blogging_section">
+        <h3>Introduction</h3>
+        <p>Have you ever been in a situation where your project needs visual indicator in order to know what is happening while the code executes? For instance, you want to flash a LED when certain condition has occurred, for that you will need a LED, resistor and jumper wires that add cost and unnecessary complexity to your project when all you want is to flash a LED for 10 seconds when it has been powered up. Adding an external circuitry would be an over kill for that short amount of time every reboot. For this purpose, the answer is already on the board itself in the form of built-in LED. It is cost-effective, built-in solution that required minimal additional components.</p>
+
+        <!-- just space -->
+      
+        <h2>Creating a Python File</h2>
+
+        <p>
+          To create a file in a Linux environment, you can employ the 'touch' command as demonstrated below. After
+          entering the command, press the 'Enter' key to execute it..
+        </p>
+
+        <div class="code_container">
+          <p>touch <a>Blink.py</a> <br>
+          </p>
+        </div>
+
+        <p>Once created go ahead and open the file using an text editor like nano or vim and copy the code below and save.</p>
+
+        <div class="code_container">
+          <p>
+            import os <br>
+            from time import sleep <br>
+            <br>
+            for i in range(20): <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; os.system( "echo '1' | sudo tee /sys/class/leds/orangepi:red:status/brightness "
+            ) <br>
+            &nbsp; &nbsp; &nbsp; &nbsp;sleep(.5) <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; os.system("echo '0' | sudo tee /sys/class/leds/orangepi:red:status/brightness "
+            ) <br>
+            &nbsp; &nbsp; &nbsp; &nbsp;sleep(.5) <br>
+
+          </p>
+
+        </div>
+        <br>
+
+        <h2>How Does the Code Works?</h2>
+
+
+        <P>Fisrt off lets go ahead and break down what this command does:</P>
+        <p>echo '1': This part of the command simply echoes the value '1' to standard output. <br>
+          <div class="code_container">
+            <p>
+              <a>echo '1'</a> | sudo tee /sys/class/leds/orangepi:red:status/brightness<br> 
+            </p>
+          </div>
+          <br>
+           "|" : The pipe symbol (|) is used to pass the output of the echo command as input to the next command. <br> <br>
+           <div class="code_container">
+            <p>
+              echo '1' <a>|</a> sudo tee /sys/class/leds/orangepi:red:status/brightness<br> 
+            </p>
+          </div>
+        </p>
+
+        <p>sudo tee /sys/class/leds/orangepi:red:status/brightness: This is where the magic happens. The tee command, preceded by sudo (to run with superuser privileges), is used to write the value received from echo to the file /sys/class/leds/orangepi:red:status/brightness.</p>
+
+        <div class="code_container">
+          <p>
+            echo '1' | <a>sudo tee /sys/class/leds/orangepi:red:status/brightness</a><br> 
+          </p>
+        </div>
+
+        <br>
+
+        <p>Now that we can control the led using the commands. We now need to automate this to run this command when for example reboot has been occured and that is where our python file comes in.
+          in the first 2 lines we import all we needed systen to run the command and sleep to have an delay between on and off for 20 times.
+        </p>
+
+
+
+        
+
+        <h2>Conclussion</h2>
+        <p>Controlling hardware elements like LEDs on Linux-based systems can be straightforward with the right tools. In this case, the tee command proves its versatility by allowing us to write to a sysfs file and control an LED's brightness. Whether you're working on embedded systems, IoT projects, or simply exploring the capabilities of your Orange Pi, knowing how to use tee in combination with sysfs can be a handy skill in your toolkit.</p>
+        <h1>Next up: Automatic Oil Dispenser with Attiny85!!</h1>
+
+        <footer>
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-linkedin"></i>
+          <i class="fa fa-github"></i>
+          <i class="fa fa-twitter"></i>
+        </footer>
+
+      </section>
+    </div>
+
+    <div class="right_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal_content">
+
+      <div class="modal_header">
+        <a href="#"><i class="fa fa-window-close"></i></a>
+      </div>
+      <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
