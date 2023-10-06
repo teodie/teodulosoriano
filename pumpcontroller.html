@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <script src="blogging.js"></script>
+  <link rel="stylesheet" href="blogging.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teodi</title>
+</head>
+
+<body>
+  <header>
+
+    <div class="logo_con">
+      <!-- <div class="logo_img"></div> -->
+      <i class="fa fa-pagelines" id="logo"></i>
+      <a id="logo_text" href="#">Teodi</a>
+    </div>
+
+    <div class="nav__container" id="nav_container">
+      <nav>
+        <ul id="nav_ul" class="nav_ul">
+          <!-- <li><a href="#">Embedded</a></li>
+                    <li><a href="#">Orange Pi</a></li> -->
+          <li><a href="./tutorials.html">Tutorials</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="#modal">Contacts</a></li>
+
+        </ul>
+
+
+      </nav>
+    </div>
+
+    <label class="burger_menu" id="burgerm">
+      <input id="chk" type="checkbox" onchange="toggle()" />
+    </label>
+  </header>
+
+  <div class="content_container">
+    <div class="left_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+    <div class="section_container">
+      <section>
+        <div class="section_header">
+          <h4 class="type">[ Tutorial ]</h4>
+          <h1 class="title">Automatic pump controller using Attiny85</h1>
+        </div>
+        <div class="section_data">
+          <div class="published_date">Published on October 06, 2023</p>
+          </div>
+          <ul class="related_list">
+            <li>Embedded</li>
+            <li>Arduino</li>
+          </ul>
+          <div class="section_author">
+            <!-- author image  -->
+
+            <div
+              style="  height: 40px; width: 40px; border-radius: 20px; background-color: rgb(27, 37, 65); border: 0;">
+              <img src="./assets/img/teodulo.png" id="author_img">
+            </div>
+
+            <p>
+            <p>By</p></a><a href="#" class="author_name">Teodulo Soriano jr.</a></p>
+          </div>
+        </div>
+        <!-- image for the blog  -->
+        <img src="./assets/img/tutorial_img/automaticpumpcontroller.PNG" class="blog_img" alt="blogging image">
+      </section>
+
+
+      <section class="blogging_section">
+        <h3>Introduction</h3>
+        <p>In our daily lives, we often find ourselves confronted with mundane tasks that demand our attention, like washing dishes or do the laundry. While these chores may seem monotonous and time-consuming, they are essential and must be addressed. Fortunately, for those of us with a background in electronics and engineering, there exists a creative outlet for simplifying such tasks - automation.</p>
+
+        <p>One such task that frequently arises is monitoring the water level in a plastic drum and manually controlling the pump to avoid overflows or pump dry runs. This repetitive duty inspired me to leverage my electronics expertise and devise a solution that could handle this task seamlessly. The result? An ingenious device - the Automatic Pump Controller, driven by the versatile ATtiny85 microcontroller.</p>
+
+        <!-- just space -->
+      
+        <h2>Components needed</h2>
+
+        <p>
+          1x Attiny85 <br>
+          1x 5v Relay <br>
+          2x LEDs (red & green) <br>
+          1x 2N222A transistor <br>
+          1x Female USB <br>
+          1x Type C female connector <br>
+          1x Diode <br>
+          2x 1k resistor <br>
+          1x 10k resistor <br>
+          2x 220 resistor <br>
+          1x Screw terminal block <br>
+        </p>
+
+
+        <h2>Project Challenges</h2>
+
+
+        <p>For our device to do what I wan't it to do, I need to tackle 2 most relevant problem. First, How can the microcontroller know if the tank is about to overflow or runs dry. Second, How can we turn off the water pump using the dc signal from the Attiny85.</p>
+
+        <p>There are plenty amount of ways that we can solved the first problem involving using float switch, a ultrasonic sensor but I settle on having a 1 inch diameter pvc, magnet and reed switch as ilustrated with my beatiful diagram below.</p>
+
+          <img style="width: 40rem;" class="tutorial_images" src="./assets/img/tutorial_img/sketch.jpg" alt="skecth">
+        
+
+
+        <p>The magnet with floating meterial under it will follow the water level inside the tank, when its reaches the reed switchs at the top and at the buttom the reed swicth will conduct where the attiny85 is monitoring. We can then write a simple program in arduino that will turn the pump relay on when the top reed switch conduct and turn it off when the bottom reed switch conduct.</p>
+
+        <h2>The Circuit Diagram</h2>
+
+        <p>
+          Download the diagram <a href="./code/Schematic_Automatic water pump_2023-10-06.pdf">Here.</a>
+        </p>
+
+        <img class="tutorial_images" src="./assets/img/tutorial_img/powerconnections.PNG" alt="">
+
+        <p>The diagram above show the connections for the type C as power input that will supply the board power with a filter capacitor to smooth out the voltage input.</p>
+
+        <img class="tutorial_images" src="./assets/img/tutorial_img/attiny85connections.PNG" alt="">
+
+        <p>Here we can see that we use pin 4 as output for relay cignal and the pin 5 and 6 as input with pulldown resistor to prevent undefined state of the pins and the connected the USB that is connected to the readswitch. Take note that I use a male USB and cut its end so I can connect it to the reed switch on the pipe like in the diagram so its not included on the board design.</p>
+
+        <img class="tutorial_images" src="./assets/img/tutorial_img/relayconnection.PNG" alt="">
+
+        <p>The X1 is where the 220v AC will be hookedup then to the normaly cosed of the relay. once the Attiny85 notice that one of the reed switch conduct it will generate a cignal to the transistor that turns it on that allows the through the relay coil and pulls the relay switch on or off that inturns give and cutoff power of the water pump.Please note that the AC connected to the X1 is in series to the pump. PLEASE don't play with mains voltage if you don't know what your doing cause one mistake can result to fatal injuries and even death!!</p>
+
+        <h2>Arduino Code</h2>
+
+          <p>Here we have simple code that turn on and off if one of the reed swicth conduct. download the <a href="./code/automatic_waterPump.ino" download>  code</a>  </p>
+          <img class="tutorial_images" src="./assets/img/tutorial_img/automaticpumpcode.PNG" alt="code">
+        
+
+
+        <h2>Conclussion</h2>
+        <p>Our journey to create the Automatic Pump Controller, driven by the ATtiny85 microcontroller, has shown us the power of innovation and automation. By simplifying the task of monitoring water levels and controlling pumps, we've made our lives more efficient.
+
+          This project is a testament to the possibilities that arise when we harness technology to improve everyday tasks. Whether you're an electronics enthusiast or someone looking for ways to streamline daily chores, automation offers a world of opportunities.
+          
+          As we wrap up this project, remember that innovation and creativity can elevate the ordinary. Embrace the world of electronics, automation, and problem-solving, and discover how you can transform routine tasks into effortless endeavors.
+          </p>
+
+          
+        <h1>Next up: Oil Dispenser Driven by Attiny13A</h1>
+
+        <footer>
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-linkedin"></i>
+          <i class="fa fa-github"></i>
+          <i class="fa fa-twitter"></i>
+        </footer>
+
+      </section>
+    </div>
+
+    <div class="right_aside_container">
+      <!-- <aside></aside> -->
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal_content">
+
+      <div class="modal_header">
+        <a href="#"><i class="fa fa-window-close"></i></a>
+      </div>
+      <div class="message"><img src="./assets/img/renovation" alt="Under Renovatipon"></div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
